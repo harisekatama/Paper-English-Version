@@ -1,136 +1,135 @@
 % Ubah judul dan label berikut sesuai dengan yang diinginkan.
-\section{Metodologi}
+\section{Methodology}
 \label{sec:metodologi}
 
 % Ubah paragraf-paragraf pada bagian ini sesuai dengan yang diinginkan.
 
-Penelitian ini dilaksanakan sesuai dengan desain sistem berikut ini beserta implementasinya. Desain sistem merupakan konsep dari pembuatan dan perencangan infrastruktur dan kemudian diwujudkan dalam bentuk blok-blok alur yang harus dikerjakan.
 
-Pada penelitian ini akan dibuat suatu alat yang terintegrasi dengan teknologi visi komputer untuk mengontrol gerak kursi roda. Secara umum penelitian kali ini akan menggunakan desain sistem sesuai dengan Gambar \ref{fig:Metodologi Penelitian}.
+This research is conducted in accordance with the following system design along with its implementation. The system design is the concept of creating and designing infrastructure, which is then manifested in the form of flow blocks that need to be executed.
+
+In this research, a device integrated with computer vision technology will be developed to control the movement of a wheelchair. Generally, this study will employ a system design as depicted in Figure \ref{fig:Metodologi Penelitian}.
 
 % Gambar 3.1
 \begin{figure} [ht] \centering
     % Nama dari file gambar yang diinputkan
     \includegraphics[scale=0.68]{gambar/blokDiagram.png}
     % Keterangan gambar yang diinputkan
-    \caption{Blok Diagram Penelitian}
+    \caption{Research Block Diagram}
     % Label referensi dari gambar yang diinputkan
     \label{fig:Metodologi Penelitian}
 \end{figure}
 
-\subsection{Estimasi Pose}
-Deteksi pose merupakan suatu proses yang melibatkan penggunaan bahasa pemrograman Python bersama dengan \emph{library} OpenCV dan \emph{framework} Mediapipe. Dalam konteks ini, Mediapipe berperan penting dalam mendapatkan informasi titik-titik \emph{landmark} yang signifikan pada objek yang diidentifikasi. \emph{Landmark} ini kemudian menjadi dasar untuk membentuk suatu representasi visual yang memvisualisasikan pose tersebut. Proses selanjutnya melibatkan penghubungan titik-titik \emph{landmark} yang telah ditentukan, di mana garis-garis dibuat untuk menggambarkan relasi spasial antar titik-titik tersebut. Dengan demikian, prosedur ini tidak hanya mengandalkan Mediapipe sebagai \emph{framework} utama, tetapi juga memanfaatkan OpenCV sebagai alat bantu untuk analisis citra dan manipulasi visual yang diperlukan dalam deteksi pose.
+\subsection{Pose Estimation}
+Pose detection is a process that involves the use of the Python programming language along with the OpenCV library and the Mediapipe framework. In this context, Mediapipe plays a crucial role in obtaining information about significant landmark points on the identified object. These landmarks then serve as the basis for creating a visual representation that visualizes the pose. The subsequent process involves connecting the specified landmark points, where lines are drawn to illustrate the spatial relationships between these points. Thus, this procedure relies not only on Mediapipe as the main framework but also utilizes OpenCV as a tool for image analysis and the visual manipulation required in pose detection.
 
-Pada penelitian kali ini akan memanfaatkan teknologi \emph{hand pose} dari Mediapipe untuk mengontrol gerak kursi roda. Terdapat beberapa titik \emph{keypoints} yang akan digunakan pada estimasi pose ini. Titik \emph{keypoints} yang akan digunakan pada estimasi  pose ini dapat dilihat pada Tabel \ref{tbl:titik keypoints}.
+In this study, we will leverage Mediapipe's hand pose technology to control the wheelchair's movement. Several key points, referred to as keypoints, will be utilized in this pose estimation. The keypoints selected for this pose estimation are outlined in Table \ref{tbl:titik keypoints}.
 
 \begin{table}[h]
-  \caption{Tabel Titik Keypoints Yang Relevan Pada Estimasi Pose\cite{Developer_2023}}
+  \caption{Table of Relevant Keypoints for Pose Estimation\cite{Developer_2023}}
   \label{tbl:titik keypoints}
   \centering
   \begin{tabular}{|c|c|}
     \hline
-    Nomor Keypoint & Nama Keypoint      \\ \hline
-    0              & Pergelangan Tangan \\ \hline
-    1              & CMC Ibu Jari       \\ \hline
-    2              & MPM Ibu Jari       \\ \hline
-    3              & IP Ibu Jari        \\ \hline
-    4              & TIP Ibu Jari       \\ \hline
-    5              & MCP Telunjuk       \\ \hline
-    6              & PIP Telunjuk       \\ \hline
-    7              & DIP Telunjuk       \\ \hline
-    8              & TIP Telunjuk       \\ \hline
-    9              & MCP Jari Tengah    \\ \hline
-    10             & PIP Jari Tengah    \\ \hline
-    11             & DIP Jari Tengah    \\ \hline
-    12             & TIP Jari Tengah    \\ \hline
-    13             & MCP Jari Manis     \\ \hline
-    14             & PIP Jari Manis     \\ \hline
-    15             & DIP Jari Manis     \\ \hline
-    16             & TIP Jari Manis     \\ \hline
-    17             & MCP Kelingking     \\ \hline
-    18             & PIP Kelingking     \\ \hline
-    19             & DIP Kelingking     \\ \hline
-    20             & TIP Kelingking     \\ \hline
+    Keypoint Number& Keypoint Name     \\ \hline
+    0              & Wrist              \\ \hline
+    1              & Thumb CMC        \\ \hline
+    2              & Thumb MPM        \\ \hline
+    3              & Thumb IP         \\ \hline
+    4              & Thumb TIP        \\ \hline
+    5              & Index Finger MCP       \\ \hline
+    6              & Index Finger PIP       \\ \hline
+    7              & Index Finger DIP       \\ \hline
+    8              & Index Finger TIP       \\ \hline
+    9              & Middle Finger MCP     \\ \hline
+    10             & Middle Finger PIP     \\ \hline
+    11             & Middle Finger DIP     \\ \hline
+    12             & Middle Finger TIP     \\ \hline
+    13             & Ring Finger MCP     \\ \hline
+    14             & Ring Finger PIP     \\ \hline
+    15             & Ring Finger DIP     \\ \hline
+    16             & Ring Finger TIP     \\ \hline
+    17             & Pinky Finger MCP     \\ \hline
+    18             & Pinky Finger PIP     \\ \hline
+    19             & Pinky Finger DIP     \\ \hline
+    20             & Pinky Finger TIP     \\ \hline
   \end{tabular}
 \end{table}
 
-Setiap titik \emph{landmark} yang terdapat pada peraga akan diwarnai dengan warna yang unik untuk membedakan setiap jarinya. Secara spesifik, warna yang diberikan pada setiap titik \emph{landmark} mencerminkan asosiasi dengan jari tertentu, sehingga menciptakan representasi visual yang lebih terperinci dan informatif. Untuk memberikan gambaran yang lebih konkret maka berikut ini contoh citra yang telah diestimasi pose yang dapat dilihat pada Gambar \ref{fig:contoh citra yang telah diestimasi pose}.
+Each landmark point on the model will be colored with a unique color to distinguish each finger. Specifically, the color assigned to each landmark point reflects its association with a specific finger, thereby creating a more detailed and informative visual representation. To provide a more concrete illustration, the following is an example image of the estimated pose, as shown in Figure \ref{fig:contoh citra yang telah diestimasi pose}
 
 \begin{figure} [ht] \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[scale=0.5]{gambar/bab3/EstimasiPose.png}
   % Keterangan gambar yang diinputkan
-  \caption{Contoh citra yang telah diestimasi pose}
+  \caption{Example image of the estimated pose}
   % Label referensi dari gambar yang diinputkan
   \label{fig:contoh citra yang telah diestimasi pose}
 \end{figure}
 
 \newpage
 
-\subsection{Klasifikasi Pose}
-Setelah proses estimasi pose tangan selesai, maka langkah selanjutnya ada mengelompokkan citra-citra hasil estimasi menjadi suatu dataset. Dataset ini akan memiliki 5 kelas berbeda yang masing-masing merepresentasikan perintah untuk maju, mundur, bergerak ke kanan, bergerak ke kiri, dan berhenti. Kelas ini mewakili perintah dasar untuk menggerakkan kursi roda. 
+\subsection{Pose Classification}
+After the hand pose estimation process is completed, the next step involves grouping the images resulting from the estimation into a dataset. This dataset will have 5 different classes, each representing commands for forward, backward, right movement, left movement, and stop. These classes represent the basic commands for controlling the wheelchair. 
 
-Untuk meningkatkan kinerja dan akurasi maka dataset ini kemudian akan melewati proses \emph{training} menggunakan algoritma \emph{Convolutional Neural Network} (CNN). Penggunaan CNN dalam \emph{training} dataset diharapkan dapat menghasilkan model yang mampu mengenali pola dan fitur yang kompleks, sehingga memungkinkan sistem untuk merespon dengan tepat terhadap variasi perintah yang mungkin diberikan oleh peraga. Hasil dari model prediksi yang telah dibuat dapat dilihat pada Gambar \ref{fig:klasifikasi kiri}, Gambar \ref{fig:klasifikasi maju}, Gambar \ref{fig:klasifikasi stop}, Gambar \ref{fig:klasifikasi mundur}, dan Gambar \ref{fig:klasifikasi kanan}.
+To enhance performance and accuracy, this dataset will undergo a training process using the Convolutional Neural Network (CNN) algorithm. The utilization of CNN in training the dataset is expected to produce a model capable of recognizing complex patterns and features, allowing the system to respond appropriately to various commands that may be given by the user. The results of the generated prediction model can be observed in Figure \ref{fig:klasifikasi kiri}, Figure \ref{fig:klasifikasi maju}, Figure \ref{fig:klasifikasi stop}, Figure \ref{fig:klasifikasi mundur}, and Figure \ref{fig:klasifikasi kanan}.
 
 \begin{figure} [h] \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[scale=0.48]{gambar/bab3/Kiri.png}
   % Keterangan gambar yang diinputkan
-  \caption{Contoh citra yang mendeteksi kiri}
+  \caption{Example image detecting left}
   % Label referensi dari gambar yang diinputkan
   \label{fig:klasifikasi kiri}
 \end{figure}
 
-\newpage
-
 \begin{figure} [h] \centering
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.473]{gambar/bab3/Maju.png}
+  \includegraphics[scale=0.48]{gambar/bab3/Maju.png}
   % Keterangan gambar yang diinputkan
-  \caption{Contoh citra yang mendeteksi maju}
+  \caption{Example image detecting forward}
   % Label referensi dari gambar yang diinputkan
   \label{fig:klasifikasi maju}
 \end{figure}
 
 \begin{figure} [h] \centering
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.473]{gambar/bab3/Stop.png}
+  \includegraphics[scale=0.48]{gambar/bab3/Stop.png}
   % Keterangan gambar yang diinputkan
-  \caption{Contoh citra yang mendeteksi stop}
+  \caption{Example image detecting a stop}
   % Label referensi dari gambar yang diinputkan
   \label{fig:klasifikasi stop}
 \end{figure}
 
 \begin{figure} [!ht] \centering
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.473]{gambar/bab3/Mundur.png}
+  \includegraphics[scale=0.48]{gambar/bab3/Mundur.png}
   % Keterangan gambar yang diinputkan
-  \caption{Contoh citra yang mendeteksi mundur}
+  \caption{Example image detecting reverse or backward}
   % Label referensi dari gambar yang diinputkan
   \label{fig:klasifikasi mundur}
 \end{figure}
 
-\begin{figure} [h] \centering
+\begin{figure} [!h] \centering
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.5]{gambar/bab3/Kanan}
+  \includegraphics[scale=0.48]{gambar/bab3/Kanan}
   % Keterangan gambar yang diinputkan
-  \caption{Contoh citra yang mendeteksi kanan}
+  \caption{Example image detecting right}
   % Label referensi dari gambar yang diinputkan
   \label{fig:klasifikasi kanan}
 \end{figure}
 
 \newpage
 
-\subsection{Paket Data}
-Untuk dapat menggerakkan kursi roda maka perlu mengirimkan perintah ke kontroler kursi roda. Pada tahap klasifikasi pose telah didapatkan perintah dasar untuk menggerakkan kursi roda, seperti maju, mundur, kanan, kiri, maupun stop. Perintah ini kemudian akan digabungkan dengan kecepatan maksimal menjadi satu \emph{command} atau paket data seperti yang dilihat pada Persamaan \ref{eq:paket-data}.
+\subsection{Data Package}
+In order to move the wheelchair, it is necessary to send commands to the wheelchair controller. In the pose classification stage, basic commands for wheelchair movement, such as forward, backward, right, left, and stop, have been obtained. These commands will then be combined with the maximum speed to form a single command or data package, as seen in Equation \ref{eq:paket-data}.
 
 % Persamaan 3.1
 \begin{equation}
   \label{eq:paket-data}
-    Arah(char),Kecepatan(integer)
+    Direction(char),Speed(integer)
 \end{equation}
 
-Variabel arah memiliki tipe data \emph{char} yang akan menentukan gerak dari motor kursi roda, serta variabel kecepatan memiliki tipe data integer yang akan menentukan kecepatan maksimal dari kursi roda. Untuk memperkecil ukuran data maka kode instruksi untuk menentukan arah gerak menggunakan satu huruf untuk mewakili setiap gerakan. Kode instruksi dapat dilihat pada Tabel \ref{tbl:kode-instruksi}. 
+The direction variable has a data type of char that will determine the movement of the wheelchair's motor, while the speed variable has an integer data type that will specify the maximum speed of the wheelchair. To minimize data size, the instruction codes for determining the direction of movement use a single letter to represent each movement. The instruction codes can be seen in Table \ref{tbl:kode-instruksi}. 
 
 % Tabel 3.2
 \begin{table}[h]
@@ -148,10 +147,10 @@ Variabel arah memiliki tipe data \emph{char} yang akan menentukan gerak dari mot
       \end{tabular}
 \end{table}
 
-Setelah kedua variabel tersebut digabungkan maka akan dikirim secara nirkabel, baik menggunakan Bluetooth maupun WiFi dari laptop atau Jetson Nano ke ESP32.
+After combining both variables, they will be wirelessly transmitted, either using Bluetooth or WiFi, from a laptop or Jetson Nano to the ESP32.
 
-\subsection{Memecahkan Paket Data}
-Paket data yang telah dikirimkan melalui laptop maupun Jetson Nano akan diterima oleh ESP32 menggunakan Bluetooth maupun WiFi. Saat diterima oleh ESP32, data tersebut akan menjalani serangkaian proses yang melibatkan pemecahan paket data dan penyesuaian sesuai dengan variabel yang telah ditentukan sebelumnya. Pemecahan paket data ini memungkinkan ESP32 untuk mendekomposisi informasi yang terkandung dalam setiap paket dan memastikan bahwa setiap variabel terpisah dengan akurat. Dengan demikian proses ini akan mengorganisir dan menyusun kembali informasi serta memastikan bahwa setiap variabel telah benar sesuai dengan nama variabel dan tipe data yang disediakan.
+\subsection{Decode Data Package}
+The data package sent through the laptop or Jetson Nano will be received by the ESP32 using Bluetooth or WiFi. Upon reception by the ESP32, the data undergoes a series of processes involving data package decoding and adjustment according to the predefined variables. This decoding process allows the ESP32 to decompose the information contained in each package and ensure that each variable is accurately separated. Thus, this process organizes and rearranges the information, ensuring that each variable aligns correctly with the provided variable names and data types.
 
-\subsection{Kontrol Navigasi}
-Kedua variabel yang didapatkan dari pemecahan paket data akan diproses pada ESP32. Variabel arah akan berperan untuk menentukan arah gerak dari motor, sedangkan variabel kecepatan akan digunakan untuk menetapkan kecepatan maksimal dari pergerakan motor tersebut. Terdapat serangkaian logika \emph{if} berantai pada kontrol navigasi, dimana empat variabel dir akan menentukan arah putaran motor. Selain itu, nilai PWM maksimal dikonfigurasi dengan menggunakan variabel kecepatan sehingga pengguna dapat menyesuaikan kecepatan maksimal motor yang pengguna inginkan. Dengan demikian pada tahap ini ESP32 dapat secara efektif memproses data yang diterima melalui sistem nirkabel dan menghasilkan instruksi kontrol yang sesuai untuk menggerakkan kursi roda dengan arah dan kecepatan yang diinginkan.
+\subsection{Navigation Control}
+Both variables obtained from decoding the data package will be processed on the ESP32. The direction variable will play a role in determining the motor's movement direction, while the speed variable will be used to set the maximum speed of the motor movement. There is a series of chained 'if' logics in the navigation control, where the four direction variables will determine the motor rotation direction. Additionally, the maximum PWM value is configured using the speed variable, allowing users to adjust the maximum motor speed as desired. Thus, at this stage, the ESP32 can effectively process the data received through the wireless system and generate corresponding control instructions to move the wheelchair in the desired direction and speed.
