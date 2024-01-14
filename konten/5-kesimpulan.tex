@@ -1,37 +1,37 @@
 % Ubah judul dan label berikut sesuai dengan yang diinginkan.
-\section{Kesimpulan}
+\section{Conclusion}
 \label{sec:kesimpulan}
 
 % Ubah paragraf-paragraf pada bagian ini sesuai dengan yang diinginkan.
-Berdasarkan hasil pengujian yang dilakukan selama pelaksanaan tugas akhir ini adalah sebagai berikut:
+Based on the test results conducted throughout the execution of this final project, the following are the findings:
 
 \begin{enumerate}
 
-  \item Waktu \emph{delay} rata-rata terendah terdapat pada pengujian dengan mengirimkan string dengan 1 nilai dan ditransmisikan melalui WiFi. Waktu \emph{delay} rata-ratanya adalah sebesar 0,03499708571 detik.
+  \item The lowest average delay time was found in the test by sending a string with 1 value transmitted via WiFi. The average delay time is 0.03499708571 seconds.
 
-  \item Waktu \emph{delay} rata-rata tertinggi terdapat pada pengujian dengan mengirimkan string dengan 2 nilai dan ditransmisikan melalui WiFi. Waktu \emph{delay} rata-ratanya adalah sebesar 1,059681387 detik.
+  \item The highest average delay time was found in the test by sending a string with 2 values transmitted via WiFi. The average delay time is 1.059681387 seconds.
   
-  \item Waktu \emph{delay} tambahan pada program pengirim data diperlukan untuk beberapa pengujian. Hal ini diakibatkan agar tidak terjadi penumpukan (\emph{flooding}) data yang dapat mengganggu kinerja dari ESP32.
+  \item Additional delay time in the data sender program is required for several tests. This is done to prevent data flooding that can disrupt the performance of ESP32.
 
-  \item Terdapat beberapa pengujian yang memerlukan waktu \emph{delay} tambahan pada program pengirim data seperti pada pengiriman data String berisi 2 nilai melalui Bluetooth yang memerlukan waktu \emph{delay} tambahan sebesar 1,5 detik, pengiriman data JSON dengan 2 nilai melalui Bluetooth yang memerlukan waktu \emph{delay} tambahan sebesar 1,1 detik, pengiriman data String berisi 2 nilai melalui WiFi yang memerlukan waktu \emph{delay} tambahan sebesar 1,3 detik, pengiriman data JSON yang berisi 2 nilai melalui WiFi yang memerlukan waktu \emph{delay} tambahan sebesar 1,5 detik, pengiriman data JSON yang berisi 1 nilai melalui Bluetooth yang memerlukan waktu \emph{delay} tambahan sebesar 1 detik, pengiriman data JSON yang berisi 1 nilai melalui WiFi yang memerlukan waktu \emph{delay} tambahan sebesar 1,5 detik.
+  \item Some tests require additional delay time in the data sender program, such as sending a String containing 2 values via Bluetooth, requiring an additional delay time of 1.5 seconds, sending JSON data with 2 values via Bluetooth, requiring an additional delay time of 1.1 seconds, sending a String containing 2 values via WiFi, requiring an additional delay time of 1.3 seconds, sending JSON data with 2 values via WiFi, requiring an additional delay time of 1.5 seconds, sending JSON data with 1 value via Bluetooth, requiring an additional delay time of 1 second, and sending JSON data with 1 value via WiFi, requiring an additional delay time of 1.5 seconds.
   
-  \item Hanya 2 pengujian yang tidak memerlukan waktu \emph{delay} tambahan pada program pengirim data, yaitu pada pengiriman data String yang berisi 1 nilai melalui Bluetooth dan pengiriman data String yang berisi 1 nilai melalui WiFi. 
+  \item Only 2 tests do not require additional delay time in the data sender program, namely sending a String with 1 value via Bluetooth and sending a String with 1 value via WiFi. 
   
-  \item Data yang ditransmisikan untuk mengontrol kursi roda melalui visi komputer lebih baik menggunakan String yang hanya berisi 1 nilai, yaitu variabel arah yang dianalogikan dengan 1 karakter huruf. 
+  \item Data transmitted to control the wheelchair via computer vision is better using a String with only 1 value, namely the direction variable analogized with 1 character. 
   
-  \item Transmisi data yang digunakan untuk mengontrol kursi roda melalui visi komputer lebih baik menggunakan WiFi dengan ESP32 sebagai \emph{Access Point}-nya.
+  \item Data transmission used to control the wheelchair via computer vision is better using WiFi with ESP32 as its Access Point.
 
 \end{enumerate}
 
-\section{Saran}
+\section{Recommendation}
 \label{chap:saran}
 
-Berdasarkan hasil yang diperoleh dari penelitian ini maka saran yang dapat dipertimbangkan untuk pengembangan lebih lanjut adalah sebagai berikut:
+Based on the results obtained from this research, the suggestions that can be considered for further development are as follows:
 
 \begin{enumerate}
 
-  \item Kecepatan putar motor diatur melalui ESP32 dengan menggunakan \emph{button} ataupun potensiometer.
+  \item The rotation speed of the motor is controlled through the ESP32 using a button or a potentiometer.
 
-  \item Mencoba menggunakan gestur lain untuk mengontrol gerak kursi roda.
+  \item Trying to use other gestures to control the movement of the wheelchair.
 
 \end{enumerate}
