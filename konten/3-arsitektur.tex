@@ -24,6 +24,15 @@ Below are detailed some of the hardware and software used in this research, as f
 
 The schematic of this device is illustrated in detail in Figure \ref{fig:Skematik Alat}. This system utilizes a camera connected to a laptop or Jetson Nano as the main device for capturing images. The workflow begins when the camera captures images of the object. These captured images are then processed by the laptop or Jetson Nano. In this system, a pre-programmed classification model plays a crucial role in interpreting the image data. The results of this classification process are crucial as they form the basis for determining the instruction codes to be implemented.
 
+\begin{figure} [!ht] \centering
+  % Nama dari file gambar yang diinputkan
+  \includegraphics[scale=0.24]{gambar/bab3/Schematics.png}
+  % Keterangan gambar yang diinputkan
+  \caption{Schematic of the wheelchair motor control}
+  % Label referensi dari gambar yang diinputkan
+  \label{fig:Skematik Alat}
+\end{figure}
+
 The instruction codes will then be combined with the maximum speed parameters previously set by the user. The combination of instruction codes and speed parameters will form a data package as wheelchair motion control. This data package will then be transmitted wirelessly, either via Bluetooth or WiFi, to the ESP32 Devkit V1 module.
 
 The ESP32 plays a crucial role in controlling the wheelchair motor. The ESP32 will serve as the control center that receives the data package sent wirelessly by the user. Subsequently, the ESP32 will decode the data package and adjust the data into predefined variables. This data package decoding process will yield two main pieces of data, which will then be further processed by the ESP32.
@@ -34,12 +43,5 @@ In its implementation, there is a series of chained 'if' logics that will be det
 
 Next, the speed variable will be used to adjust the Pulse Width Modulation (PWM) level on the motor controller. This PWM adjustment is crucial for controlling the motor rotation speed. By adjusting the PWM level, the maximum motor speed can be customized according to the requirements.
 
-\begin{figure} [!ht] \centering
-  % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.24]{gambar/bab3/Schematics.png}
-  % Keterangan gambar yang diinputkan
-  \caption{Schematic of the wheelchair motor control}
-  % Label referensi dari gambar yang diinputkan
-  \label{fig:Skematik Alat}
-\end{figure}
+
 
